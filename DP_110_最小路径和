@@ -1,0 +1,36 @@
+/*描述
+
+给定一个只含非负整数的m*n网格，找到一条从左上角到右下角的可以使数字和最小的路径。
+
+
+你在同一时间只能向下或者向右移动一步 */
+
+class Solution {
+public:
+    /**
+     * @param grid: a list of lists of integers
+     * @return: An integer, minimizes the sum of all numbers along its path
+     */
+    int minPathSum(vector<vector<int>> &grid) {
+        vector<vector<int>> dp (grid);
+        
+        for (int i = 1; i < grid.size(); i++)
+        {
+            dp[i][0] = dp[i-1][0] + grid[i][0];
+        }
+        for (int j = 1; j < grid[0].size(); j++)
+        {
+            dp[0][j] = dp[0][j-1] + grid[0][j];
+        }
+        for (int i = 1; i < grid.size(); i++)
+        for (int j = 1; j < grid[0].size(); j++)
+        {
+            int x = dp[i-1][j];
+            int y = dp[i][j-1];
+            dp[i][j] = min(x, y) + grid[i][j];
+        }
+        int m = grid.size();
+        int n = grid[0].size();
+        return dp[m-1][n-1];
+    }
+};
