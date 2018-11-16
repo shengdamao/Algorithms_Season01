@@ -1,0 +1,28 @@
+class Solution {
+public:
+    /**
+     * @param n: An integer
+     * @return: An integer
+     */
+    int climbStairs(int n) {
+        if (n <= 0 )
+        return 0;
+        else if (n == 1)
+        return 1;
+        else if (n == 2)
+        return 2;
+        
+        //核心：目标层n的方法数，等于n-1层的方法数加n-2 层的方法数
+        // 即，最后一步走1的所有方法，加上最后一步走2的所有方法。
+        int a = 1, b = 2;
+        int target;
+        for (int i = 2; i < n; i++)
+            {
+                target = a + b;       // a:n-2层, b : n-1层
+                a = b;                // 之前的n-1变为新的n-2
+                b = target;           //之前的n 变为新的n-1
+            }
+        return target;
+        // write your code here
+    }
+};
