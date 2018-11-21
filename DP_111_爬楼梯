@@ -18,7 +18,7 @@ public:
         int target;
         for (int i = 2; i < n; i++)
             {
-                target = a + b;       // a:n-2层, b : n-1层
+                target = a + b;       // 
                 a = b;                // 之前的n-1变为新的n-2
                 b = target;           //之前的n 变为新的n-1
             }
