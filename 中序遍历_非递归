@@ -1,0 +1,65 @@
+/**
+ * Definition of TreeNode:
+ * class TreeNode {
+ * public:
+ *     int val;
+ *     TreeNode *left, *right;
+ *     TreeNode(int val) {
+ *         this->val = val;
+ *         this->left = this->right = NULL;
+ *     }
+ * }
+ */
+
+class Solution {
+public:
+    /**
+     * @param root: A Tree
+     * @return: Inorder in ArrayList which contains node values.
+     */
+    vector<int> inorderTraversal(TreeNode * root) {
+        if (!root) return {};
+        
+        vector<int> result;
+        stack<TreeNode*> st;
+        TreeNode * node;
+        while (root)
+        {
+            st.push(root);
+            root = root -> left;    //找到最深左子树。
+        }
+        
+        while (!st.empty())
+        {
+            node = st.top();
+            result.push_back(node -> val);
+           
+            if (!node -> right)
+            {
+                st.pop();    //此步退栈，可由左子树退栈，
+                            //或由右子树退栈。
+                
+                /* 没有右结点分2种情况，一种是自身左节点，没有右子树
+                一种是自身右结点没有右子树*/
+                
+                
+                while (!st.empty() && st.top() -> right  == node)
+                {  // 这种情况为从右结点 向上退栈，此情况需再退栈一层
+                    node = st.top();
+                    st.pop();
+                }
+            }
+            else {
+                node = node -> right;  //如果有右子树
+                while (node){
+                st.push(node);          //压栈右子树（进入右子树的递归函数内）
+                node = node -> left;    //找到此右结点 的最深左子树
+                }
+            }
+            
+        }
+            
+        
+        return result;// write your code here
+    }
+};
