@@ -1,0 +1,33 @@
+class Solution {
+public:
+    /**
+     * @param str: An array of char
+     * @param offset: An integer
+     * @return: nothing
+     */
+    void rotateString(string &str, int offset) {
+        int len = str.size();
+        if (len == 0) return;
+        
+        
+        offset = offset % len;
+        if (str == "") return;
+        
+        string temp (len , 0);
+        int j = 0;
+        for (int i = len - offset; i < len; i++)
+        {
+            temp[j++] = str[i];
+        }
+        for (int i = 0; i < len - offset; i++)
+        {
+            temp[j++] = str[i];
+        }
+        
+        for (int i = 0; i < len; i ++)
+        {
+            str[i] = temp[i];
+        }
+        // write your code here
+    }
+};
