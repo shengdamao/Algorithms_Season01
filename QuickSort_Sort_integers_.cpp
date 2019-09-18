@@ -46,3 +46,20 @@ int main()
 {
     std::cout << "Quick Sort!\n"; 
 }
+
+
+/* 易错点笔记：
+1. while (i < j && k <= A[j])    27行
+   while (i < j && A[i] <= k)    32行    
+   
+   不能遗漏 i < j
+   
+2. 第36，37行，  
+		quicksort(A, s, i - 1);
+		quicksort(A, i + 1, e);
+		
+   必须使用 i-1, i+1, 不然就会死循环。 
+   
+3. 记得要递归。
+
+*/
