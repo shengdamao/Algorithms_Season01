@@ -34,7 +34,7 @@ public:
 		{
 			B[pb++] = A[p2++];
 		}
-		int len = A.size();
+		
 		for (int i = 0; i < e - s + 1; i++)
 		{
 			A[s + i] = B[i];
@@ -75,5 +75,5 @@ int main()
 1. merge 和 mergeSort 两个辅助函数
 2. merge 的流程，while(p1,p2), while(p1), while(p2), FOR循环，用B数组数据将A数组覆盖。
 3. main 函数里，声明B数组的方法， vector<int> B ( A.size() );  （括号内写数组长度）。
-
+4. mergeSort 必须有 if(s < e) 46行
 */
