@@ -69,3 +69,11 @@ int main()
 {
     std::cout << "Basic Merge Sort!\n"; 
 }
+
+
+/*  易错点笔记
+1. merge 和 mergeSort 两个辅助函数
+2. merge 的流程，while(p1,p2), while(p1), while(p2), FOR循环，用B数组数据将A数组覆盖。
+3. main 函数里，声明B数组的方法， vector<int> B ( A.size() );  （括号内写数组长度）。
+
+*/
